@@ -38,12 +38,14 @@ class Node:
       self.adj_nodes.append(nodei)
 class Graph2:
    def __init__(self,num_nodes):
-      self.nodes=[Node(i) for i in range(0,num_nodes)]
+      self.nodes = {}
+      for i in range(0,num_nodes):
+         self.nodes[i]=Node(i)
    def add_edge(self,nodei,nodej):
       self.nodes[nodei].add_egde_from(self.nodes[nodej])
       self.nodes[nodej].add_egde_from(self.nodes[nodei])
    def dfs(self):
-      for node in self.nodes:
+      for name,node in self.nodes.items():
          node.visited=False;
       dfs_list = {self.nodes[0]}
       while(dfs_list):
@@ -59,7 +61,7 @@ class Graph2:
 
 
 num_nodes=2000
-g=Graph(num_nodes)
+g=Graph2(num_nodes)
 
 def add_edges_to_graph():
    global g
